@@ -38,6 +38,6 @@ export const navigation = [
   { href: "/people/", label: "People" },
   { href: "/projects/", label: "Projects" },
   { href: "/teaching/", label: "Teaching" },
-  { href: "/services/", label: "Services" },
+  { href: "/services/", label: "Service" },
   { href: "/contact/", label: "Contact" },
 ] as const;
