@@ -7,7 +7,8 @@ interface Props {
 }
 
 const { publication, index } = Astro.props;
-const authorParts = publication.authors.split("Xinchang Li");
+const selfNames = ["Xinchang “Cathy” Li", "Xinchang ‘Cathy’ Li", "Xinchang Li", "X. Li"];
+const authorParts = publication.authors.split(/(Xinchang [“‘]Cathy[”’] Li|Xinchang Li|X\. Li)/);
 ---
 
 <article
@@ -23,9 +24,7 @@ const authorParts = publication.authors.split("Xinchang Li");
   </div>
   <h2>{publication.title}</h2>
   <p class="authors">
-    {authorParts.map((part, partIndex) => (
-      <>{part}{partIndex < authorParts.length - 1 && <strong>Xinchang Li</strong>}</>
-    ))}
+    {authorParts.map((part) => selfNames.includes(part) ? <strong>{part}</strong> : part)}
   </p>
   {publication.highlight && <p class="publication-highlight">{publication.highlight}</p>}
   <div class="publication-footer">
