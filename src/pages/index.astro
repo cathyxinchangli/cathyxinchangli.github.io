@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProfileLinks from "../components/ProfileLinks.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import { siteConfig } from "../config";
+import { publications } from "../data/publications";
+
+const featured = publications.filter((publication) => publication.featured);
+const honors = [
+  { year: "2025", title: "Engelbrecht Graduate Fellowship", detail: "University of Illinois Urbana-Champaign" },
+  { year: "2024", title: "Outstanding Reviewer Award", detail: "Earth’s Future · American Geophysical Union" },
+  { year: "2023", title: "Mavis Future Faculty Fellowship", detail: "Grainger College of Engineering" },
+];
+---
+
+<BaseLayout>
+  <section class="home-hero">
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow">Cities · climate · energy</p>
+        <h1>Xinchang <span>“Cathy” Li</span></h1>
+        <p class="hero-lede">Building knowledge and tools for sustainable, resilient urban futures.</p>
+        <p class="appointment">
+          <strong>{siteConfig.title}</strong>
+          {siteConfig.department}<br />
+          {siteConfig.institution} · {siteConfig.startDate}
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/people/#opportunities">PhD opportunities</a>
+          <a class="button secondary" href="/publications/">Explore research</a>
+        </div>
+      </div>
+      <figure class="portrait-frame">
+        <img src="/profile.jpeg" width="1600" height="1600" alt="Portrait of Xinchang Cathy Li" fetchpriority="high" />
+        <figcaption class="portrait-caption">
+          <span>{siteConfig.currentRole}</span>
+          <span>PNNL</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="research-band section">
+    <div class="shell research-grid">
+      <div>
+        <p class="section-kicker">Research</p>
+        <h2>Connecting urban systems across scales.</h2>
+      </div>
+      <div>
+        <p class="research-copy">{siteConfig.researchStatement}</p>
+        <ul class="method-list" aria-label="Research methods">
+          <li>Earth system modeling</li>
+          <li>Building energy modeling</li>
+          <li>Artificial intelligence & machine learning</li>
+          <li>Remote sensing & data integration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="recruitment-card">
+      <div>
+        <p class="section-kicker">Joining the group</p>
+        <h2>PhD opportunities for Spring 2027</h2>
+      </div>
+      <div>
+        <p>I am recruiting PhD students interested in urban energy and climate, Earth system model development and applications, and AI/ML for environmental research.</p>
+        <a class="button" href="/people/#opportunities">Learn how to apply</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-header">
+      <div>
+        <p class="section-kicker">Selected work</p>
+        <h2>Research at the climate–energy frontier</h2>
+      </div>
+      <a class="text-link" href="/publications/">All publications →</a>
+    </div>
+    <div class="publication-list">
+      {featured.map((publication, index) => <PublicationCard publication={publication} index={index + 1} />)}
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-header">
+      <div>
+        <p class="section-kicker">Recognition</p>
+        <h2>Selected honors</h2>
+      </div>
+    </div>
+    <div class="honors-grid">
+      {honors.map((honor) => (
+        <article class="honor-card">
+          <span class="year">{honor.year}</span>
+          <h3>{honor.title}</h3>
+          <p>{honor.detail}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section shell">
+    <p class="section-kicker">Elsewhere</p>
+    <h2>Follow the work</h2>
+    <ProfileLinks />
+  </section>
+</BaseLayout>

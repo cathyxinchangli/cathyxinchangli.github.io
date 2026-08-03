@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import { publications, publicationTags, publicationYears } from "../data/publications";
+---
+
+<BaseLayout title="Publications" description="Published research by Xinchang Cathy Li on urban climate, energy, Earth system modeling, and sustainable cities.">
+  <PageHero eyebrow="Research record" title="Publications" intro="Peer-reviewed work spanning urban climate–energy interactions, Earth system modeling, climate risks, and solution pathways." />
+  <section class="section shell">
+    <div class="filters" aria-label="Publication filters">
+      <div class="filter-group">
+        <label for="year-filter">Year</label>
+        <select id="year-filter">
+          <option value="all">All years</option>
+          {publicationYears.map((year) => <option value={year}>{year}</option>)}
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="topic-filter">Topic</label>
+        <select id="topic-filter">
+          <option value="all">All topics</option>
+          {publicationTags.map((tag) => <option value={tag}>{tag}</option>)}
+        </select>
+      </div>
+      <p class="results-count" aria-live="polite"><span id="publication-count">{publications.length}</span> publications</p>
+    </div>
+    <div class="publication-list" id="publication-list">
+      {publications.map((publication, index) => <PublicationCard publication={publication} index={index + 1} />)}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const yearFilter = document.querySelector<HTMLSelectElement>("#year-filter");
+  const topicFilter = document.querySelector<HTMLSelectElement>("#topic-filter");
+  const count = document.querySelector<HTMLElement>("#publication-count");
+  const cards = [...document.querySelectorAll<HTMLElement>("[data-publication]")];
+
+  const filterPublications = () => {
+    const year = yearFilter?.value ?? "all";
+    const topic = topicFilter?.value ?? "all";
+    let visible = 0;
+    cards.forEach((card) => {
+      const matchesYear = year === "all" || card.dataset.year === year;
+      const matchesTopic = topic === "all" || (card.dataset.tags ?? "").split("|").includes(topic);
+      card.hidden = !(matchesYear && matchesTopic);
+      if (!card.hidden) visible += 1;
+    });
+    if (count) count.textContent = String(visible);
+  };
+
+  yearFilter?.addEventListener("change", filterPublications);
+  topicFilter?.addEventListener("change", filterPublications);
+</script>

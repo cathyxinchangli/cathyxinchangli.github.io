@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { siteConfig } from "../config";
+
+const social = [
+  ["Google Scholar", siteConfig.links.scholar],
+  ["ORCID", siteConfig.links.orcid],
+  ["GitHub", siteConfig.links.github],
+  ["LinkedIn", siteConfig.links.linkedin],
+  ["ResearchGate", siteConfig.links.researchgate],
+] as const;
+---
+
+<BaseLayout title="Contact" description="Contact Xinchang Cathy Li about research, collaboration, and PhD opportunities.">
+  <PageHero eyebrow="Get in touch" title="Let’s start a conversation" intro="For research collaborations, speaking opportunities, and prospective PhD inquiries, email is the best way to reach me." />
+  <section class="section shell contact-grid">
+    <div>
+      <p class="section-kicker">Email</p>
+      <h2>Research, collaboration & opportunities</h2>
+      <a class="email-large" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+      <p class="contact-note">Prospective PhD students: please include your CV and a concise description of your research interests and fit.</p>
+    </div>
+    <div>
+      <p class="section-kicker">Profiles</p>
+      <div class="social-list">
+        {social.map(([label, href]) => (
+          <a href={href} target="_blank" rel="noreferrer"><span>{label}</span><span aria-hidden="true">↗</span></a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

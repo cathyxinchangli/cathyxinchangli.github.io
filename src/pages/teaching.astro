@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { mentoring, teaching } from "../data/teaching";
+---
+
+<BaseLayout title="Teaching" description="Teaching and mentoring experience of Xinchang Cathy Li.">
+  <PageHero eyebrow="Teaching & mentoring" title="Learning through systems thinking" intro="Teaching connects physical principles, computational methods, and the lived realities of cities—while mentoring helps students turn curiosity into independent research." />
+
+  <section class="section shell">
+    <div class="section-header">
+      <div><p class="section-kicker">Courses</p><h2>Teaching experience</h2></div>
+    </div>
+    <div class="timeline">
+      {teaching.map((item) => (
+        <article class="timeline-item">
+          <div class="timeline-year">{item.years}</div>
+          <div>
+            <h2>{item.course}</h2>
+            <h3>{item.role} · {item.institution}</h3>
+            <p>{item.topics}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-header">
+      <div><p class="section-kicker">Student development</p><h2>Mentoring experience</h2></div>
+    </div>
+    <div class="timeline">
+      {mentoring.map((item) => (
+        <article class="timeline-item">
+          <div class="timeline-year">{item.years}</div>
+          <div>
+            <h2>{item.name}</h2>
+            <h3>{item.role}</h3>
+            <p>{item.description}</p>
+            <p class="outcome">{item.outcome}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

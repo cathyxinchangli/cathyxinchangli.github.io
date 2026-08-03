@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import ProfileLinks from "../components/ProfileLinks.astro";
+import { siteConfig } from "../config";
+---
+
+<BaseLayout title="People" description="Meet Xinchang Cathy Li and learn about Spring 2027 PhD opportunities in urban climate and energy research.">
+  <PageHero eyebrow="People & opportunities" title="A research group in the making" intro="Launching at the University of Wisconsin–Madison in January 2027, with an interdisciplinary focus on cities, buildings, energy, and climate." />
+
+  <section class="section shell people-profile">
+    <img src="/profile.jpeg" width="1600" height="1600" alt="Xinchang Cathy Li smiling" loading="lazy" />
+    <div class="bio-copy">
+      <p class="section-kicker">Principal investigator</p>
+      <h2>{siteConfig.name}</h2>
+      <p>{siteConfig.researchStatement}</p>
+      <p>I am currently a Linus Pauling Distinguished Postdoctoral Fellow at Pacific Northwest National Laboratory and will join the Department of Civil and Environmental Engineering at the University of Wisconsin–Madison as an Assistant Professor in January 2027.</p>
+      <ul class="credential-list">
+        <li><span>Ph.D. 2025</span><div><strong>Civil Engineering</strong><br />University of Illinois Urbana-Champaign</div></li>
+        <li><span>M.S. 2019</span><div><strong>Civil Engineering</strong><br />University of Illinois Urbana-Champaign</div></li>
+        <li><span>B.Eng. 2017</span><div><strong>Building Services Engineering</strong><br />The Hong Kong Polytechnic University</div></li>
+      </ul>
+      <ProfileLinks compact />
+    </div>
+  </section>
+
+  <section id="opportunities" class="section research-band">
+    <div class="shell opportunity-grid">
+      <div>
+        <p class="section-kicker">Spring 2027</p>
+        <h2>PhD student opportunities</h2>
+      </div>
+      <div>
+        <p class="research-copy">I welcome curious, collaborative students who want to build better ways of understanding—and shaping—the climate and energy future of cities.</p>
+        <ul class="opportunity-list">
+          {siteConfig.recruitment.areas.map((area) => <li>{area}</li>)}
+        </ul>
+        <div class="application-note">
+          <strong>Interested in joining?</strong>
+          <p>{siteConfig.recruitment.application}</p>
+          <a class="button" href={`mailto:${siteConfig.email}?subject=Prospective PhD student – Spring 2027`}>Email Cathy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

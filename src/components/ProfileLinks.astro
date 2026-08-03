@@ -1,0 +1,22 @@
+---
+import { siteConfig } from "../config";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const links = [
+  { label: "Google Scholar", href: siteConfig.links.scholar },
+  { label: "ORCID", href: siteConfig.links.orcid },
+  { label: "GitHub", href: siteConfig.links.github },
+  { label: "LinkedIn", href: siteConfig.links.linkedin },
+  { label: "ResearchGate", href: siteConfig.links.researchgate },
+];
+---
+
+<div class:list={["profile-links", { compact }]} aria-label="Professional profiles">
+  {links.map((link) => (
+    <a href={link.href} target="_blank" rel="noreferrer">{link.label}<span aria-hidden="true"> ↗</span></a>
+  ))}
+</div>

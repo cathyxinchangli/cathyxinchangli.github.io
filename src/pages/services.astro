@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { serviceCategories, services } from "../data/services";
+---
+
+<BaseLayout title="Services" description="Professional leadership, peer review, conference service, and community engagement by Xinchang Cathy Li.">
+  <PageHero eyebrow="Service & leadership" title="Strengthening research communities" intro="Leadership, peer review, convening, and outreach that help interdisciplinary climate and urban-systems communities thrive." />
+
+  <div class="shell">
+    {serviceCategories.map((category) => {
+      const entries = services
+        .filter((service) => service.category === category)
+        .sort((a, b) => Number(Boolean(b.current)) - Number(Boolean(a.current)));
+      return (
+        <section class="service-section">
+          <h2>{category}</h2>
+          <div class="service-list">
+            {entries.map((entry) => (
+              <article class="service-item">
+                <h3>{entry.role}</h3>
+                <p class="service-meta">{entry.organization} · {entry.years}</p>
+                {entry.description && <p>{entry.description}</p>}
+                {entry.events && <ul>{entry.events.map((event) => <li>{event}</li>)}</ul>}
+              </article>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</BaseLayout>

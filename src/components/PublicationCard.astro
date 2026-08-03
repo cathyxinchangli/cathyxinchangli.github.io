@@ -1,0 +1,37 @@
+---
+import type { Publication } from "../data/publications";
+
+interface Props {
+  publication: Publication;
+  index?: number;
+}
+
+const { publication, index } = Astro.props;
+const authorParts = publication.authors.split("Xinchang Li");
+---
+
+<article
+  class="publication-card"
+  data-publication
+  data-year={publication.year}
+  data-tags={publication.tags.join("|")}
+>
+  <div class="publication-meta">
+    {index && <span class="publication-number">{String(index).padStart(2, "0")}</span>}
+    <span>{publication.year}</span>
+    <span>{publication.venue}</span>
+  </div>
+  <h2>{publication.title}</h2>
+  <p class="authors">
+    {authorParts.map((part, partIndex) => (
+      <>{part}{partIndex < authorParts.length - 1 && <strong>Xinchang Li</strong>}</>
+    ))}
+  </p>
+  {publication.highlight && <p class="publication-highlight">{publication.highlight}</p>}
+  <div class="publication-footer">
+    <div class="tag-list">
+      {publication.tags.map((tag) => <span>{tag}</span>)}
+    </div>
+    <a class="text-link" href={publication.doi} target="_blank" rel="noreferrer">View publication <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
