@@ -16,7 +16,7 @@ const isActive = (href: string) => href === "/" ? currentPath === "/" : currentP
       <span></span><span></span><span></span>
     </button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-      {navigation.map((item) => (
+      {navigation.filter((item) => !item.hidden).map((item) => (
         <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}</a>
       ))}
     </nav>

@@ -19,7 +19,11 @@ import { serviceCategories, services } from "../data/services";
             {entries.map((entry) => (
               <article class="service-item">
                 <h3>{entry.role}</h3>
-                <p class="service-meta">{entry.organization} · {entry.years}</p>
+                {(entry.organization || entry.years) && (
+                  <p class="service-meta">
+                    {entry.organization}{entry.organization && entry.years && " · "}{entry.years}
+                  </p>
+                )}
                 {entry.description && <p>{entry.description}</p>}
                 {entry.events && <ul>{entry.events.map((event) => <li>{event}</li>)}</ul>}
               </article>

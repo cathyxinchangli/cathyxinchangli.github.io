@@ -33,11 +33,11 @@ export const siteConfig = {
 } as const;
 
 export const navigation = [
-  { href: "/", label: "Home" },
-  { href: "/publications/", label: "Publications" },
-  { href: "/people/", label: "People" },
-  { href: "/projects/", label: "Projects" },
-  { href: "/teaching/", label: "Teaching" },
-  { href: "/services/", label: "Service" },
-  { href: "/contact/", label: "Contact" },
+  { href: "/", label: "Home", hidden: false },
+  { href: "/publications/", label: "Publications", hidden: false },
+  { href: "/people/", label: "People", hidden: false },
+  { href: "/projects/", label: "Projects", hidden: false },
+  { href: "/teaching/", label: "Teaching", hidden: true },
+  { href: "/services/", label: "Service", hidden: false },
+  { href: "/contact/", label: "Contact", hidden: false },
 ] as const;
