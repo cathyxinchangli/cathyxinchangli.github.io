@@ -70,16 +70,15 @@ button, input, select { font: inherit; }
 
 .home-hero { overflow: hidden; padding-block: clamp(2.75rem, 5vw, 4.75rem); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(320px, .72fr); gap: clamp(3rem, 8vw, 7rem); align-items: center; }
-.home-hero h1 { margin-bottom: 1.5rem; }
-.home-hero h1 span { display: block; color: var(--green); }
+.home-hero h1 { margin-bottom: 1.5rem; font-size: clamp(1.45rem, 4.5vw, 3.5rem); white-space: nowrap; }
+.home-hero h1 span { color: var(--green); }
 .hero-lede { max-width: 650px; color: var(--muted); font-family: var(--sans); font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.45; letter-spacing: -.015em; }
 .appointment { max-width: 650px; margin: 2rem 0; padding-left: 1.2rem; border-left: 3px solid var(--green); }
 .appointment strong { display: block; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
-.portrait-frame { position: relative; }
+.portrait-frame { position: relative; width: calc(85% - 68px); margin-inline: auto; }
 .portrait-frame::before { content: ""; position: absolute; z-index: -1; width: 80%; height: 80%; top: -7%; right: -10%; background: var(--lime); border-radius: 50%; filter: blur(2px); }
-.portrait-frame img { width: 100%; height: clamp(480px, 52vw, 680px); object-fit: cover; object-position: 50% 38%; box-shadow: var(--shadow); }
-.portrait-caption { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1rem; color: var(--muted); font-size: .78rem; }
+.portrait-frame img { width: 100%; height: clamp(408px, 44.2vw, 578px); object-fit: cover; object-position: 50% 38%; box-shadow: var(--shadow); }
 
 .research-band { border-block: 1px solid var(--line); background: transparent; color: var(--ink); }
 .research-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(3rem, 7vw, 7rem); }
@@ -90,7 +89,7 @@ button, input, select { font: inherit; }
 .method-list li { padding-top: .7rem; border-top: 1px solid var(--line); font-size: .8rem; }
 
 .recruitment-card { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); padding: clamp(2rem, 4vw, 3.5rem); border-block: 1px solid #b7c369; background: color-mix(in srgb, var(--lime) 68%, var(--paper)); }
-.recruitment-card h2 { margin-bottom: 0; }
+.recruitment-card h2 { margin-bottom: 0; font-size: clamp(1.45rem, 2.5vw, 2.3rem); }
 .recruitment-card p { max-width: 650px; }
 .recruitment-card .section-kicker { color: var(--green-dark); }
 .recruitment-link { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: 1rem; padding-bottom: .25rem; border-bottom: 1px solid currentColor; color: var(--green-dark); font-size: .8rem; font-weight: 700; text-decoration: none; }
@@ -128,8 +127,10 @@ button, input, select { font: inherit; }
 .people-profile img { width: 100%; height: clamp(470px, 55vw, 680px); object-fit: cover; object-position: 50% 38%; }
 .bio-copy h2 { margin: .5rem 0 1.2rem; }
 .bio-copy > p { max-width: 720px; color: var(--muted); font-size: 1.05rem; }
-.credential-list { display: grid; gap: 1rem; margin: 2rem 0; padding: 0; list-style: none; }
-.credential-list li { display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.bio-subtitle { margin: 1.5rem 0 .6rem; font-size: 1.15rem; line-height: 1.25; }
+.credential-list { display: grid; gap: .45rem; margin: 0 0 1.25rem; padding: 0; list-style: none; }
+.credential-list li { display: grid; grid-template-columns: 44px 1fr; gap: .65rem; color: var(--muted); font-size: .85rem; line-height: 1.45; }
+.credential-list strong { color: var(--ink); }
 .credential-list span { color: var(--green); font-size: .8rem; font-weight: 600; }
 
 .opportunity-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; }
@@ -162,11 +163,12 @@ button, input, select { font: inherit; }
 .service-item p, .service-item li { color: var(--muted); font-size: .92rem; }
 .service-item ul { margin: .7rem 0 0; padding-left: 1.2rem; }
 
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 8vw, 8rem); }
-.contact-grid h2 { margin-bottom: 1.2rem; }
-.email-large { display: inline-block; margin: 1.2rem 0 2rem; color: var(--green-dark); font-family: var(--sans); font-size: clamp(1.25rem, 2.5vw, 2rem); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.contact-grid { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 4vw, 4rem); }
+.contact-grid h2 { margin-bottom: 1.2rem; font-size: clamp(1.7rem, 3vw, 2.8rem); }
+.contact-grid :is(.contact-note, .email-large, .social-list a) { font-size: 1.125rem; font-weight: 600; }
+.email-large { display: inline-block; margin: 0; color: var(--green-dark); font-family: var(--sans); overflow-wrap: anywhere; }
 .contact-note { color: var(--muted); }
-.social-list { display: grid; border-top: 1px solid var(--line); }
+.social-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; border-top: 1px solid var(--line); }
 .social-list a { display: flex; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); font-weight: 600; text-decoration: none; }
 .social-list a:hover { color: var(--green); }
 
@@ -175,13 +177,14 @@ button, input, select { font: inherit; }
 .footer-inner p { margin: 0; }
 
 @media (max-width: 900px) {
+  .social-list { grid-template-columns: 1fr; gap: 0; }
   .nav-toggle { display: block; }
   .site-nav { position: absolute; top: 68px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 1rem 20px 1.5rem; border-bottom: 1px solid var(--line); background: var(--paper); }
   .site-nav.is-open { display: flex; }
   .site-nav a { padding: .75rem 0; }
   .hero-grid, .research-grid, .recruitment-card, .people-profile, .opportunity-grid, .contact-grid { grid-template-columns: 1fr; }
-  .portrait-frame { width: min(500px, 92%); margin-inline: auto; }
-  .portrait-frame img { height: min(680px, 116vw); }
+  .portrait-frame { width: min(425px, 78.2%); margin-inline: auto; }
+  .portrait-frame img { height: min(578px, 98.6vw); }
   .research-grid { gap: 2rem; }
   .honors-grid { grid-template-columns: 1fr; }
 }
@@ -200,7 +203,6 @@ button, input, select { font: inherit; }
   .timeline-item { grid-template-columns: 1fr; gap: .5rem; }
   .service-section { grid-template-columns: 1fr; }
   .service-section h2 { position: static; }
-  .credential-list li { grid-template-columns: 1fr; gap: .2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

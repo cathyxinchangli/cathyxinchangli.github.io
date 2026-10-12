@@ -7,21 +7,22 @@ export const siteConfig = {
   startDate: "January 2027",
   currentRole: "Linus Pauling Distinguished Postdoctoral Fellow",
   currentInstitution: "Pacific Northwest National Laboratory",
-  email: "xinchang.cathy.li@gmail.com",
+  email: "cathy.li@wisc.edu",
   description:
     "Urban climate and energy researcher advancing sustainable and resilient urban futures through Earth system modeling, building energy modeling, and AI/ML.",
   researchStatement:
-    "I study how cities, buildings, energy systems, and climate interact—from individual neighborhoods to the globe. My work develops integrated models and data-driven methods to uncover risks, evaluate solutions, and support urban futures that are both sustainable and resilient.",
+    "I study the local to global interactions between urban energy, climate, and humans under global change. My work develops models and data, advances understanding, and support solutions for the co-benefits of urban energy, climate, and people.",
   recruitment: {
     term: "Spring 2027",
     areas: [
       "Urban energy and climate",
       "Earth system data and model development",
-      "Earth system model applications",
+      "Energy systems and grid resilience",
       "Artificial intelligence and machine learning",
     ],
     application:
-      "Please email your CV and a concise description of your research interests and fit.",
+      "Please complete the prospective PhD student survey to share your background and research interests.",
+    surveyUrl: "https://surveymars.com/q/druhKghEB",
   },
   links: {
     github: "https://github.com/cathyxinchangli",
