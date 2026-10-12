@@ -6,7 +6,7 @@ import { siteConfig } from "../config";
 import { honors } from "../data/honors";
 ---
 
-<BaseLayout title="People" description="Meet Xinchang Cathy Li and learn about Spring 2027 PhD opportunities in urban climate and energy research.">
+<BaseLayout title="People" description="Meet Xinchang Cathy Li and learn about Summer/Fall 2027 PhD opportunities in urban climate and energy research.">
   <PageHero eyebrow="People & opportunities" title="A research group in the making" intro="Launching at the University of Wisconsin–Madison in January 2027, with an interdisciplinary focus on cities, buildings, energy, and climate." />
 
   <section class="section shell people-profile">
@@ -15,7 +15,7 @@ import { honors } from "../data/honors";
       <p class="section-kicker">Principal investigator</p>
       <h2>{siteConfig.name}</h2>
       <p>{siteConfig.researchStatement}</p>
-      <p>I am currently a Linus Pauling Distinguished Postdoctoral Fellow at Pacific Northwest National Laboratory and will join the Department of Civil and Environmental Engineering at the University of Wisconsin–Madison as an Assistant Professor in January 2027 under the <a href="https://rise.wisc.edu/rise-ai/">RISE-AI initiative</a>. My group will advance human-energy-climate nexus science for sustainable and resilient urban futures through hybrid frameworks that combine AI/ML, Earth system modeling, building energy &amp; energy systems modeling, and remote sensing.</p>
+      <p>I am currently a <a href="https://www.pnnl.gov/projects/linus-pauling-distinguished-postdoctoral-fellowship">Linus Pauling Distinguished Postdoctoral Fellow</a> at Pacific Northwest National Laboratory and will join <a href="https://engineering.wisc.edu/departments/civil-environmental-engineering/">the Department of Civil and Environmental Engineering at the University of Wisconsin–Madison</a> as an Assistant Professor in January 2027 under the <a href="https://rise.wisc.edu/rise-ai/">RISE-AI initiative</a>. My group will advance human-energy-climate nexus science for sustainable and resilient urban futures through hybrid frameworks that combine AI/ML, Earth system modeling, building energy &amp; energy systems modeling, and remote sensing.</p>
       <h3 class="bio-subtitle">Education</h3>
       <ul class="credential-list">
         <li><span>2025</span><div><strong>Ph.D., Civil Engineering</strong> · University of Illinois Urbana-Champaign</div></li>
@@ -35,11 +35,11 @@ import { honors } from "../data/honors";
   <section id="opportunities" class="section research-band">
     <div class="shell opportunity-grid">
       <div>
-        <p class="section-kicker">Starting Spring 2027</p>
+        <p class="section-kicker">Summer/Fall 2027</p>
         <h2>PhD student opportunities</h2>
       </div>
       <div>
-        <p class="research-copy">I welcome highly motivated and curious students who want to build better ways of understanding and shaping the climate and energy future of cities.</p>
+        <p class="research-copy">I welcome highly motivated and curious students who want to build better ways of understanding and shaping the climate and energy future of cities. See announcement below for more details.</p>
         <ul class="opportunity-list">
           {siteConfig.recruitment.areas.map((area) => <li>{area}</li>)}
         </ul>
@@ -49,6 +49,24 @@ import { honors } from "../data/honors";
           <a class="button" href={siteConfig.recruitment.surveyUrl}>Complete the survey</a>
         </div>
       </div>
+      <div class="job-ad">
+        <div class="job-ad-header">
+          <h3>PhD opportunity announcement</h3>
+          <a class="text-link" href={siteConfig.recruitment.jobAdUrl} target="_blank" rel="noreferrer">Open the job ad (PDF)<span class="sr-only"> in a new tab</span></a>
+        </div>
+        <iframe
+          src={`${siteConfig.recruitment.jobAdUrl}#view=FitH`}
+          title="PhD student opportunities job advertisement"
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .job-ad { grid-column: 1 / -1; min-width: 0; }
+  .job-ad-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+  .job-ad-header h3 { margin: 0; }
+  .job-ad iframe { display: block; width: 100%; height: clamp(560px, 80vh, 900px); border: 1px solid var(--line); background: var(--white); }
+</style>

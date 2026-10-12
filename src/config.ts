@@ -23,6 +23,7 @@ export const siteConfig = {
     application:
       "Please complete the prospective PhD student survey to share your background and research interests.",
     surveyUrl: "https://surveymars.com/q/druhKghEB",
+    jobAdUrl: "/documents/Xinchang_Li_PhD_Student_Opportunities.pdf",
   },
   links: {
     github: "https://github.com/cathyxinchangli",
