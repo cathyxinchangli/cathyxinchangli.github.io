@@ -23,6 +23,52 @@ const ogImage = new URL("/og.png", Astro.site);
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f7f4ea" />
+    <script is:inline>
+      (() => {
+        const storageKey = "color-theme";
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+        let preference = null;
+
+        try {
+          const saved = localStorage.getItem(storageKey);
+          if (saved === "light" || saved === "dark") preference = saved;
+        } catch {
+          // The toggle still works when browser storage is unavailable.
+        }
+
+        const applyTheme = () => {
+          const theme = preference ?? (systemTheme.matches ? "dark" : "light");
+          const dark = theme === "dark";
+          document.documentElement.dataset.theme = theme;
+          document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#151c18" : "#f7f4ea");
+          const toggle = document.querySelector("#theme-toggle");
+          toggle?.setAttribute("aria-pressed", String(dark));
+          toggle?.setAttribute("title", dark ? "Switch to light mode" : "Switch to dark mode");
+        };
+
+        applyTheme();
+        systemTheme.addEventListener("change", () => {
+          if (preference === null) applyTheme();
+        });
+        window.addEventListener("storage", (event) => {
+          if (event.key !== storageKey && event.key !== null) return;
+          preference = event.newValue === "light" || event.newValue === "dark" ? event.newValue : null;
+          applyTheme();
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+          applyTheme();
+          document.querySelector("#theme-toggle")?.addEventListener("click", () => {
+            preference = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+            try {
+              localStorage.setItem(storageKey, preference);
+            } catch {
+              // Keep the choice for this page even if it cannot be saved.
+            }
+            applyTheme();
+          });
+        }, { once: true });
+      })();
+    </script>
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/jpeg" href="/profile.jpeg" />
     <meta property="og:type" content="website" />
