@@ -54,11 +54,14 @@ const featured = publications.filter((publication) => publication.featured);
     <div class="recruitment-card">
       <div>
         <p class="section-kicker">Joining the group</p>
-        <h2>PhD opportunities<br />starting Spring 2027</h2>
+        <h2>PhD opportunities<br />Summer/Fall 2027</h2>
       </div>
       <div>
         <p>I am recruiting PhD students interested in urban energy and climate, Earth system model development and applications, and AI/ML for environmental research.</p>
-        <a class="recruitment-link" href={siteConfig.recruitment.surveyUrl}>Complete the prospective student survey <span aria-hidden="true">→</span></a>
+        <div class="recruitment-actions">
+          <a class="recruitment-link" href="/people/#opportunities">See announcement <span aria-hidden="true">→</span></a>
+          <a class="recruitment-link" href={siteConfig.recruitment.surveyUrl}>Complete the prospective student survey <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
   </section>

@@ -92,6 +92,7 @@ button, input, select { font: inherit; }
 .recruitment-card h2 { margin-bottom: 0; font-size: clamp(1.45rem, 2.5vw, 2.3rem); }
 .recruitment-card p { max-width: 650px; }
 .recruitment-card .section-kicker { color: var(--green-dark); }
+.recruitment-actions { display: flex; flex-wrap: wrap; column-gap: 1.5rem; }
 .recruitment-link { display: inline-flex; align-items: center; gap: 1.5rem; margin-top: 1rem; padding-bottom: .25rem; border-bottom: 1px solid currentColor; color: var(--green-dark); font-size: .8rem; font-weight: 700; text-decoration: none; }
 
 .publication-list { display: grid; gap: 1px; background: var(--line); border-block: 1px solid var(--line); }
